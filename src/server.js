@@ -9,6 +9,7 @@ const {
   createNewPostsTable,
   insertPostsData,
 } = require("./concept/realtionShips");
+const {getUserRegistrationStats}  = require("./concept/aggregation")
 const {getUsersWithPost }  = require('./concept/joins')
 async function textBasicQuery() {
   try {
@@ -57,7 +58,10 @@ async function textBasicQuery() {
     //   7
     // );
     const data = await getUsersWithPost()
+    const aggregate=  await getUserRegistrationStats()
     console.log("data",data)
+    console.log("new aggreagtion Data",aggregate);
+    
   } catch (error) {
     console.error("error white create", error);
   }
